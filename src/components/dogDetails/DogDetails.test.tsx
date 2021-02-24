@@ -4,11 +4,12 @@ import DogDetailsView from './DogDetailsView';
 
 describe('DogDetails', () => {
  const mockFn = jest.fn();
- const wrapper = shallow(<DogDetails name={"teste"} urlImage={"teste"} showAlert={mockFn}/>);
+ const instanceMockedHook = mockFn();
+ const wrapper = shallow(<DogDetails name={"teste"} urlImage={"teste"} onBark={mockFn}/>);
  it('renders component with his props', () => {
   expect(
     wrapper.matchesElement(
-      <DogDetailsView name={"teste"} urlImage={"teste"} showAlert={mockFn}/>  
+      <DogDetailsView name={"teste"} urlImage={"teste"} onBark={mockFn} scoldCount={0} scoldSetter={instanceMockedHook}/>  
     )).toBe(true); 
  })
 });

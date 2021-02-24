@@ -24,5 +24,12 @@ export const dogDetailsStyle = makeStyles({
         border: "unset"
       }
     },
+    containerButton:{
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-around",
+      padding: 20,
+      width:"100%",
+    }
   })
   

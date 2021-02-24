@@ -2,18 +2,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import DogDetailsView from './DogDetailsView';
 import Button from '../button/Button';
-jest.spyOn(React, "useCallback").mockImplementation((f) => f);
+
 
 describe('DogDetailsView', () => {
     const mockFn = jest.fn();
-    const mockedHook = React.useCallback(() => {
-        mockFn();
-    }, []);
-    const instanceMockedHook = mockedHook;
-    console.log(instanceMockedHook)
+    const instanceMockedHook = mockFn();
     it('renders component with his props', () => {
     const wrapper = shallow(<DogDetailsView name={"teste"} urlImage={"teste"} showAlert={instanceMockedHook}/>);
-        console.log(wrapper.debug())
      expect(
        wrapper.matchesElement(
         <div>
@@ -29,6 +24,10 @@ describe('DogDetailsView', () => {
         </div>
        )).toBe(true); 
     }) 
-   
 
+    it('should call a function onClick', () => {
+        const wrapper = shallow(<DogDetailsView name={"teste"} urlImage={"teste"} showAlert={mockFn}/>);
+        wrapper.find('Button').simulate('click');
+        expect(mockFn).toHaveBeenCalled();
+      })
    });

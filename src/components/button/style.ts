@@ -11,6 +11,9 @@ export const buttonStyle = makeStyles({
         borderRadius: "6px",
         "&:hover":{
             background: "#4291D3",
+        },
+        "&:focus":{
+            outline: "none",
         }
     }
   })

@@ -1,13 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const appStyle = makeStyles({
-    container:{
-        width: "100vw",
-        height:"100vh",
-        display:"flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center"
-    }
-  })
-  
+  container: {
+    width: '100vw',
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});

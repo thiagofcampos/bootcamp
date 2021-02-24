@@ -5,18 +5,19 @@ import { appStyle } from './style';
 
 function App() {
   const classes = appStyle();
-  const image = "https://www.eastdallasvetclinic.com/sites/default/files/styles/large/adaptive-image/public/golden-retriever-dog-breed-info.jpg?itok=EXS-JR-v"
+  const image =
+    'https://www.eastdallasvetclinic.com/sites/default/files/styles/large/adaptive-image/public/golden-retriever-dog-breed-info.jpg?itok=EXS-JR-v';
 
   const onBark = (text: string) => {
-    alert(text)
-  }
+    alert(text);
+  };
 
   return (
     <>
-    <CssBaseline/>
-    <div className={classes.container}> 
-      <DogDetails name={"Golden"} urlImage={image} onBark={onBark}/>
-    </div>
+      <CssBaseline />
+      <div className={classes.container}>
+        <DogDetails name={'Golden'} urlImage={image} onBark={onBark} />
+      </div>
     </>
   );
 }

@@ -1,6 +1,7 @@
 {
   "printWidth": 100,
   "singleQuote": true,
+	"editor.formatOnSave": false,
   "overrides": [
     {
       "files": "*.md",

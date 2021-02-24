@@ -8,7 +8,14 @@ describe('DogDetailsView', () => {
     const mockFn = jest.fn();
     const instanceMockedHook = mockFn();
     it('renders component with his props', () => {
-    const wrapper = shallow(<DogDetailsView name={"teste"} urlImage={"teste"} showAlert={instanceMockedHook}/>);
+    const wrapper = shallow(<DogDetailsView 
+        name={"teste"} 
+        urlImage={"teste"} 
+        onBark={instanceMockedHook}
+        scoldCount={0}
+        scoldSetter={mockFn}
+        />);
+ 
      expect(
        wrapper.matchesElement(
         <div>
@@ -17,17 +24,31 @@ describe('DogDetailsView', () => {
             <span>
                 teste
             </span>
+            <span>Scold: 0</span>
+            <div>
             <Button onClick={instanceMockedHook}>
                 Bark!
             </Button>
+            <Button onClick={mockFn}>
+                    Scold!
+            </Button>
+            </div>
             </div>
         </div>
        )).toBe(true); 
     }) 
 
-    it('should call a function onClick', () => {
-        const wrapper = shallow(<DogDetailsView name={"teste"} urlImage={"teste"} showAlert={mockFn}/>);
-        wrapper.find('Button').simulate('click');
+    it('should call a function onClick bark', () => {
+        const wrapper = shallow(<DogDetailsView 
+            name={"teste"} 
+            urlImage={"teste"} 
+            onBark={mockFn}
+            scoldCount={0}
+            scoldSetter={mockFn}
+            />);
+        wrapper.find('Button').at(0).simulate('click');
+        wrapper.find('Button').at(1).simulate('click');
+        expect(mockFn).toHaveBeenCalled();
         expect(mockFn).toHaveBeenCalled();
       })
    });

@@ -1,12 +1,27 @@
 import React from 'react';
-import { IDogDetailsProps } from './DogDetails.types';
 import DogDetailsView from './DogDetailsView';
 
+export interface IDogDetailsProps{
+    urlImage: string,
+    name: string,
+    onBark: (value: string) => void,
+}
 
-const DogDetails = ({urlImage, name, showAlert}: IDogDetailsProps) => {
+const DogDetails = ({urlImage, name, onBark}: IDogDetailsProps) => {
+
+    const [scoldCount, setScoldCount] = React.useState(0)
+    const handleScold = () => {
+        setScoldCount(scoldCount + 1)
+    }
 
     return(
-        <DogDetailsView urlImage={urlImage} name={name} showAlert={showAlert}/>
+        <DogDetailsView 
+        urlImage={urlImage} 
+        name={name} 
+        onBark={onBark} 
+        scoldCount={scoldCount} 
+        scoldSetter={handleScold}
+        />
     )
 }
 

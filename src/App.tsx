@@ -7,7 +7,7 @@ function App() {
   const classes = appStyle();
   const image = "https://www.eastdallasvetclinic.com/sites/default/files/styles/large/adaptive-image/public/golden-retriever-dog-breed-info.jpg?itok=EXS-JR-v"
 
-  const showAlert = (text: string) => {
+  const onBark = (text: string) => {
     alert(text)
   }
 
@@ -15,7 +15,7 @@ function App() {
     <>
     <CssBaseline/>
     <div className={classes.container}> 
-      <DogDetails name={"Golden"} urlImage={image} showAlert={showAlert}/>
+      <DogDetails name={"Golden"} urlImage={image} onBark={onBark}/>
     </div>
     </>
   );

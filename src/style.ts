@@ -6,7 +6,7 @@ export const appStyle = makeStyles({
     height: '100vh',
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
   },
 });

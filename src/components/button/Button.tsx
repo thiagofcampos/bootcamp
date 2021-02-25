@@ -2,7 +2,7 @@ import React from 'react';
 import ButtonView from './ButtonView';
 
 export interface IButtonProps {
-  onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   children: React.ReactNode;
 }
 

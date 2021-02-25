@@ -1,5 +1,6 @@
 import React from 'react';
 import DogDetails from './components/dogDetails/DogDetails';
+import CreateBeerForm from './components/createBeerForm/CreateBeerForm';
 import { CssBaseline } from '@material-ui/core';
 import { appStyle } from './style';
 
@@ -17,6 +18,7 @@ function App() {
       <CssBaseline />
       <div className={classes.container}>
         <DogDetails name={'Golden'} urlImage={image} onBark={onBark} />
+        <CreateBeerForm />
       </div>
     </>
   );

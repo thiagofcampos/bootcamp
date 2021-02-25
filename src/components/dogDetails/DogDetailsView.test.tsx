@@ -46,7 +46,6 @@ describe('DogDetailsView', () => {
     );
     wrapper.find('Button').at(0).simulate('click');
     wrapper.find('Button').at(1).simulate('click');
-    expect(mockFn).toHaveBeenCalled();
-    expect(mockFn).toHaveBeenCalled();
+    expect(mockFn).toHaveBeenCalledTimes(2);
   });
 });

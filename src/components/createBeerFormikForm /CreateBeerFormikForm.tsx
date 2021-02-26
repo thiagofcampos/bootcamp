@@ -1,15 +1,15 @@
 import React, { useCallback } from 'react';
-import CreateBeerFormView from './CreateBeerFormView';
+import CreateBeerFormikFormView from './CreateBeerFormikFormView';
 
-interface Props {
+interface ICreateBeeProps {
   name: string;
   type: number;
   hasCorn: boolean;
   ingredients: string;
 }
 
-const CreateBeerForm = () => {
-  const [beer, setBeer] = React.useState<Props>({
+const CreateBeerFormikForm = () => {
+  const [beer, setBeer] = React.useState<ICreateBeeProps>({
     name: '',
     type: 0,
     hasCorn: false,
@@ -31,7 +31,7 @@ const CreateBeerForm = () => {
       debugger;
       setBeer({
         ...beer,
-        hasCorn: !beer.hasCorn,
+        [event.target.name]: !beer.hasCorn,
       });
     },
     [beer]
@@ -45,7 +45,7 @@ const CreateBeerForm = () => {
   );
 
   return (
-    <CreateBeerFormView
+    <CreateBeerFormikFormView
       name={beer.name}
       type={beer.type}
       hasCorn={beer.hasCorn}
@@ -57,4 +57,4 @@ const CreateBeerForm = () => {
   );
 };
 
-export default CreateBeerForm;
+export default CreateBeerFormikForm;

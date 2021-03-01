@@ -1,12 +1,12 @@
 import React from 'react';
-import { buttonStyle } from './style';
+import { buttonStyle } from './ButtonView.styles';
 
-export interface IButtonViewProps {
+export interface Props {
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   children: React.ReactNode;
 }
 
-const ButtonView = ({ children, onClick }: IButtonViewProps) => {
+const ButtonView = ({ children, onClick }: Props) => {
   const classes = buttonStyle();
 
   return (

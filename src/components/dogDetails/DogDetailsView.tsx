@@ -1,27 +1,17 @@
 import React, { useCallback } from 'react';
-import { dogDetailsStyle } from './style';
+import { dogDetailsStyle } from './DogDetailsView.styles';
 import Button from '../button/Button';
 
-export interface IDogDetailsViewProps {
+export interface Props {
   urlImage: string;
   name: string;
-  onBark: (value: string) => void;
+  onBark: () => void;
   scoldCount: number;
-  scoldSetter: () => void;
+  onScold: () => void;
 }
 
-const DogDetailsView = ({
-  urlImage,
-  name,
-  onBark,
-  scoldCount,
-  scoldSetter,
-}: IDogDetailsViewProps) => {
-  const bark = 'Woof! Woof!';
+const DogDetailsView = ({ urlImage, name, onBark, scoldCount, onScold }: Props) => {
   const classes = dogDetailsStyle();
-  const onShowAlert = useCallback(() => {
-    onBark(bark);
-  }, []);
   return (
     <div>
       <div className={classes.containerImage}>
@@ -29,8 +19,8 @@ const DogDetailsView = ({
         <span>{name}</span>
         <span>Scold: {scoldCount}</span>
         <div className={classes.containerButton}>
-          <Button onClick={onShowAlert}>Bark!</Button>
-          <Button onClick={scoldSetter}>Scold!</Button>
+          <Button onClick={onBark}>Bark!</Button>
+          <Button onClick={onScold}>Scold!</Button>
         </div>
       </div>
     </div>

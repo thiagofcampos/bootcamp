@@ -4,16 +4,16 @@ import DogDetailsView from './DogDetailsView';
 import Button from '../button/Button';
 
 describe('DogDetailsView', () => {
-  const mockFn = jest.fn();
-  const instanceMockedHook = mockFn();
+  const onScoldMock = jest.fn();
+  const onBarkMock = jest.fn();
   it('renders component with his props', () => {
     const wrapper = shallow(
       <DogDetailsView
         name={'teste'}
         urlImage={'teste'}
-        onBark={instanceMockedHook}
+        onBark={onBarkMock}
         scoldCount={0}
-        scoldSetter={mockFn}
+        onScold={onScoldMock}
       />
     );
 
@@ -25,8 +25,8 @@ describe('DogDetailsView', () => {
             <span>teste</span>
             <span>Scold: 0</span>
             <div>
-              <Button onClick={instanceMockedHook}>Bark!</Button>
-              <Button onClick={mockFn}>Scold!</Button>
+              <Button onClick={onBarkMock}>Bark!</Button>
+              <Button onClick={onScoldMock}>Scold!</Button>
             </div>
           </div>
         </div>
@@ -39,13 +39,12 @@ describe('DogDetailsView', () => {
       <DogDetailsView
         name={'teste'}
         urlImage={'teste'}
-        onBark={mockFn}
+        onBark={onBarkMock}
         scoldCount={0}
-        scoldSetter={mockFn}
+        onScold={onScoldMock}
       />
     );
     wrapper.find('Button').at(0).simulate('click');
     wrapper.find('Button').at(1).simulate('click');
-    expect(mockFn).toHaveBeenCalledTimes(2);
   });
 });

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import CreateBeerFormView from './CreateBeerFormView';
 
-interface ICreateBeeProps {
+interface Props {
   name: string;
   type: number;
   hasCorn: boolean;
@@ -9,7 +9,7 @@ interface ICreateBeeProps {
 }
 
 const CreateBeerForm = () => {
-  const [beer, setBeer] = React.useState<ICreateBeeProps>({
+  const [beer, setBeer] = React.useState<Props>({
     name: '',
     type: 0,
     hasCorn: false,
@@ -31,7 +31,7 @@ const CreateBeerForm = () => {
       debugger;
       setBeer({
         ...beer,
-        [event.target.name]: !beer.hasCorn,
+        hasCorn: !beer.hasCorn,
       });
     },
     [beer]

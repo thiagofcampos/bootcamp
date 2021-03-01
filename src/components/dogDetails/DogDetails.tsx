@@ -1,15 +1,15 @@
 import React from 'react';
 import DogDetailsView from './DogDetailsView';
 
-export interface IDogDetailsProps {
+export interface Props {
   urlImage: string;
   name: string;
-  onBark: (value: string) => void;
+  onBark: () => void;
 }
 
-const DogDetails = ({ urlImage, name, onBark }: IDogDetailsProps) => {
+const DogDetails = ({ urlImage, name, onBark }: Props) => {
   const [scoldCount, setScoldCount] = React.useState(0);
-  const handleScold = () => {
+  const onScold = () => {
     setScoldCount(scoldCount + 1);
   };
 
@@ -19,7 +19,7 @@ const DogDetails = ({ urlImage, name, onBark }: IDogDetailsProps) => {
       name={name}
       onBark={onBark}
       scoldCount={scoldCount}
-      scoldSetter={handleScold}
+      onScold={onScold}
     />
   );
 };

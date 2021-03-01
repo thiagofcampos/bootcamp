@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBeerFormStyle } from './style';
+import { createBeerFormStyle } from './CreateBeerFormView.styles';
 import TextField from '@material-ui/core/TextField';
 import { InputLabel, Typography } from '@material-ui/core';
 import Button from '../button/Button';
@@ -9,7 +9,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import { typeBeerList } from '../../conf/mocks/typeBeerMock';
 
-interface ICreateBeerProps {
+interface Props {
   name: string;
   type: number;
   hasCorn: boolean;
@@ -27,7 +27,7 @@ const CreateBeerFormView = ({
   onChangeText,
   onChangeCheckBox,
   onSubmit,
-}: ICreateBeerProps) => {
+}: Props) => {
   const classes = createBeerFormStyle();
 
   return (

@@ -1,5 +1,5 @@
-import React from 'react';
-import { CreateBeerFormikFormStyle } from './style';
+import React, { useMemo } from 'react';
+import { CreateBeerFormikFormStyle } from './CreateBeerFormView.styles';
 import TextField from '@material-ui/core/TextField';
 import { InputLabel, Typography } from '@material-ui/core';
 import Button from '../button/Button';
@@ -8,48 +8,49 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import { typeBeerList } from '../../conf/mocks/typeBeerMock';
+import { FormData } from './CreateBeerFormView.types';
+import { useFormik } from 'formik';
 
-interface ICreateBeerProps {
-  name: string;
-  type: number;
-  hasCorn: boolean;
-  ingredients: string;
-  onChangeText: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  onChangeCheckBox: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onSubmit: (event: React.FormEvent) => void;
+interface Props {
+  handleSubmit: (values: FormData) => void;
 }
 
-const CreateBeerFormikFormView = ({
-  name,
-  type,
-  hasCorn,
-  ingredients,
-  onChangeText,
-  onChangeCheckBox,
-  onSubmit,
-}: ICreateBeerProps) => {
+const CreateBeerFormikFormView = ({ handleSubmit }: Props) => {
   const classes = CreateBeerFormikFormStyle();
+
+  const initialValues = useFormik({
+    initialValues: {
+      name: '',
+      type: 0,
+      hasCorn: false,
+      ingredients: '',
+    },
+    onSubmit: (values) => {
+      handleSubmit(values);
+    },
+  });
 
   return (
     <div className={classes.container}>
-      <form onSubmit={onSubmit} className={classes.root} noValidate autoComplete="off">
+      <form onSubmit={initialValues.handleSubmit} className={classes.root}>
         <Typography variant="h4" align={'center'} gutterBottom>
-          Create Beer
+          FormikForm Create Beer
         </Typography>
         <TextField
           name="name"
-          onChange={onChangeText}
-          value={name}
-          id="standard-basic"
+          type="text"
+          onChange={initialValues.handleChange}
+          value={initialValues.values.name}
+          id="name"
           label="Beer name"
         />
         <TextField
-          id="standard-select-currency"
+          id="type"
           name="type"
           select
           label="Type"
-          value={type}
-          onChange={onChangeText}
+          onChange={initialValues.handleChange}
+          value={initialValues.values.type}
           helperText="Please select your beer type"
         >
           {typeBeerList.map((option) => (
@@ -61,10 +62,10 @@ const CreateBeerFormikFormView = ({
         <FormControlLabel
           control={
             <Checkbox
-              checked={hasCorn}
-              onChange={onChangeCheckBox}
+              checked={initialValues.values.hasCorn}
               name="hasCorn"
               color="primary"
+              onChange={initialValues.handleChange}
             />
           }
           label="Has corn"
@@ -72,9 +73,9 @@ const CreateBeerFormikFormView = ({
         <InputLabel className={classes.ingredientsLabel}>Ingredients</InputLabel>
         <TextareaAutosize
           name="ingredients"
-          onChange={onChangeText}
-          value={ingredients}
+          value={initialValues.values.ingredients}
           aria-label="minimum height"
+          onChange={initialValues.handleChange}
           rowsMin={6}
         />
         <Button>Submit</Button>

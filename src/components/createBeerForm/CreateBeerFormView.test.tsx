@@ -14,26 +14,25 @@ import { typeBeerList } from '../../conf/mocks/typeBeerMock';
 import Button from '../button/Button';
 
 describe('CreateBeerFormView', () => {
-  const onSubmitMock = jest.fn((f) => f);
-  const onChangeTextMock = jest.fn((f) => f);
-  const onChangeCheckBoxMock = jest.fn((f) => f);
+  const mockFn = jest.fn();
+  const instanceMockFunction = mockFn();
   const beer = {
     name: 'teste',
     type: 1,
     hasCorn: true,
     ingredients: 'malte',
-    onChangeText: onChangeTextMock,
-    onChangeCheckBox: onChangeCheckBoxMock,
+    onChangeText: instanceMockFunction,
+    onChangeCheckBox: instanceMockFunction,
   };
 
   const { name, type, hasCorn, ingredients, onChangeText, onChangeCheckBox } = beer;
 
   it('should render with the right props', () => {
-    const wrapper = shallow(<CreateBeerFormView onSubmit={onSubmitMock} {...beer} />);
+    const wrapper = shallow(<CreateBeerFormView onSubmit={instanceMockFunction} {...beer} />);
     expect(
       wrapper.matchesElement(
         <div>
-          <form onSubmit={onSubmitMock} noValidate autoComplete="off">
+          <form onSubmit={instanceMockFunction} noValidate autoComplete="off">
             <Typography variant="h4" align={'center'} gutterBottom>
               Create Beer
             </Typography>
@@ -83,5 +82,11 @@ describe('CreateBeerFormView', () => {
         </div>
       )
     ).toBe(true);
+  });
+
+  it('should call a function onClick', () => {
+    const wrapper = shallow(<CreateBeerFormView onSubmit={mockFn} {...beer} />);
+    wrapper.find('form').first().simulate('submit');
+    expect(mockFn).toHaveBeenCalled();
   });
 });

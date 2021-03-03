@@ -36,15 +36,9 @@ const CreateBeerFormView = ({
         <Typography variant="h4" align={'center'} gutterBottom>
           Create Beer
         </Typography>
+        <TextField name="name" onChange={onChangeText} value={name} id="name" label="Beer name" />
         <TextField
-          name="name"
-          onChange={onChangeText}
-          value={name}
-          id="standard-basic"
-          label="Beer name"
-        />
-        <TextField
-          id="standard-select-currency"
+          id="type"
           name="type"
           select
           label="Type"

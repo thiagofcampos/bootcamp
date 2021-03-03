@@ -26,20 +26,17 @@ const CreateBeerForm = () => {
     },
     [beer]
   );
-  const onChangeCheckBox = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      debugger;
-      setBeer({
-        ...beer,
-        hasCorn: !beer.hasCorn,
-      });
-    },
-    [beer]
-  );
+  const onChangeCheckBox = useCallback(() => {
+    setBeer({
+      ...beer,
+      hasCorn: !beer.hasCorn,
+    });
+  }, [beer]);
 
   const onSubmit = useCallback(
     (event: React.FormEvent) => {
       event.preventDefault();
+      console.log(beer);
     },
     [beer]
   );

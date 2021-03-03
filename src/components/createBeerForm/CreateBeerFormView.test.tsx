@@ -36,16 +36,10 @@ describe('CreateBeerFormView', () => {
             <Typography variant="h4" align={'center'} gutterBottom>
               Create Beer
             </Typography>
+            <TextField name="name" onChange={onChangeText} value={name} label="Beer name" />
             <TextField
-              name="name"
-              onChange={onChangeText}
-              value={name}
-              id="standard-basic"
-              label="Beer name"
-            />
-            <TextField
-              id="standard-select-currency"
               name="type"
+              id="type"
               select
               label="Type"
               value={type}
@@ -88,5 +82,10 @@ describe('CreateBeerFormView', () => {
     const wrapper = shallow(<CreateBeerFormView onSubmit={mockFn} {...beer} />);
     wrapper.find('form').first().simulate('submit');
     expect(mockFn).toHaveBeenCalled();
+  });
+
+  it('should render all de elements on typeBeerList when map', () => {
+    const wrapper = shallow(<CreateBeerFormView onSubmit={mockFn} {...beer} />);
+    expect(wrapper.find('#type').children()).toHaveLength(typeBeerList.length);
   });
 });

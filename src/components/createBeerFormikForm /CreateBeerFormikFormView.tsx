@@ -33,7 +33,7 @@ const CreateBeerFormikFormView = ({ handleSubmit }: Props) => {
   return (
     <div className={classes.container}>
       <form onSubmit={initialValues.handleSubmit} className={classes.root}>
-        <Typography variant="h4" align={'center'} gutterBottom>
+        <Typography id={'title'} variant="h4" align={'center'} gutterBottom>
           FormikForm Create Beer
         </Typography>
         <TextField
@@ -62,8 +62,8 @@ const CreateBeerFormikFormView = ({ handleSubmit }: Props) => {
         <FormControlLabel
           control={
             <Checkbox
+              id="hasCorn"
               checked={initialValues.values.hasCorn}
-              name="hasCorn"
               color="primary"
               onChange={initialValues.handleChange}
             />

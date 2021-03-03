@@ -45,6 +45,20 @@ describe('DogDetailsView', () => {
       />
     );
     wrapper.find('Button').at(0).simulate('click');
+    expect(onBarkMock).toHaveBeenCalled();
+  });
+
+  it('should call a function onClick onScold', () => {
+    const wrapper = shallow(
+      <DogDetailsView
+        name={'teste'}
+        urlImage={'teste'}
+        onBark={onBarkMock}
+        scoldCount={0}
+        onScold={onScoldMock}
+      />
+    );
     wrapper.find('Button').at(1).simulate('click');
+    expect(onScoldMock).toHaveBeenCalled();
   });
 });

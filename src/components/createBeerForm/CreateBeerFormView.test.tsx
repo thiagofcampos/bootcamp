@@ -84,7 +84,7 @@ describe('CreateBeerFormView', () => {
     ).toBe(true);
   });
 
-  it('should call a function onClick', () => {
+  it('should call a function onSubmit', () => {
     const wrapper = shallow(<CreateBeerFormView onSubmit={mockFn} {...beer} />);
     wrapper.find('form').first().simulate('submit');
     expect(mockFn).toHaveBeenCalled();

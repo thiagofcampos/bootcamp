@@ -13,9 +13,6 @@ export const CreateBeerFormikFormStyle = makeStyles((theme: Theme) =>
         width: '100%',
       },
     },
-    ingredientsLabel: {
-      marginBottom: '-5px',
-    },
     container: {
       padding: '30px',
       borderRadius: '5px',

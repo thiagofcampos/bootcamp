@@ -4,23 +4,23 @@ export const typeBeerList = [
     value: 'Ale',
   },
   {
-    id: 1,
+    id: 2,
     value: 'Lager',
   },
   {
-    id: 1,
+    id: 3,
     value: 'Stout',
   },
   {
-    id: 1,
+    id: 4,
     value: 'Porter',
   },
   {
-    id: 1,
+    id: 5,
     value: 'Pale Ale',
   },
   {
-    id: 1,
+    id: 6,
     value: 'Wheat',
   },
 ];

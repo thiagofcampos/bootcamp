@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import CreateBeerFormikForm from './CreateBeerFormikForm';
 import CreateBeerFormikFormView from './CreateBeerFormikFormView';
-import { FormData } from './CreateBeerFormView.types';
+import { FormData } from './CreateBeerFormikView.types';
 
 describe('CreateBeerFormikForm', () => {
   it('should render with the right props', () => {

@@ -20,8 +20,7 @@ export const CreateBeerFormikFormStyle = makeStyles((theme: Theme) =>
       alignItems: 'center',
       display: 'flex',
       flexDirection: 'column',
-      height: '80vh',
-      width: '30%',
+      width: '100%',
     },
   })
 );

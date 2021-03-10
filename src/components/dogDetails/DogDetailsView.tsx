@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { dogDetailsStyle } from './DogDetailsView.styles';
 import Button from '../button/Button';
 
@@ -15,7 +15,7 @@ const DogDetailsView = ({ urlImage, name, onBark, scoldCount, onScold }: Props) 
   return (
     <div>
       <div className={classes.containerImage}>
-        <img src={urlImage} />
+        <img src={urlImage} alt={'Dog'} />
         <span>{name}</span>
         <span>Scold: {scoldCount}</span>
         <div className={classes.containerButton}>

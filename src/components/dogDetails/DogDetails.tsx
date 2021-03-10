@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import DogDetailsView from './DogDetailsView';
 
-export interface Props {
-  urlImage: string;
-  name: string;
-  onBark: () => void;
-}
+const DogDetails = () => {
+  const image =
+    'https://www.eastdallasvetclinic.com/sites/default/files/styles/large/adaptive-image/public/golden-retriever-dog-breed-info.jpg?itok=EXS-JR-v';
 
-const DogDetails = ({ urlImage, name, onBark }: Props) => {
+  const onBark = useCallback(() => {
+    alert('Wuf wuf');
+  }, []);
+
   const [scoldCount, setScoldCount] = React.useState(0);
   const onScold = () => {
     setScoldCount(scoldCount + 1);
@@ -15,8 +16,8 @@ const DogDetails = ({ urlImage, name, onBark }: Props) => {
 
   return (
     <DogDetailsView
-      urlImage={urlImage}
-      name={name}
+      urlImage={image}
+      name={'Golden'}
       onBark={onBark}
       scoldCount={scoldCount}
       onScold={onScold}

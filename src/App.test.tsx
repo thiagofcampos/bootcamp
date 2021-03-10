@@ -8,7 +8,6 @@ import DogDetails from './components/dogDetails/DogDetails';
 
 describe('App', () => {
   it('should render with the right props', () => {
-    const mockFn = jest.fn();
     const wrapper = shallow(<App />);
 
     expect(
@@ -31,12 +30,5 @@ describe('App', () => {
         </>
       )
     ).toBe(true);
-  });
-  it('should call the alert when onBark function is called', () => {
-    jest.spyOn(window, 'alert').mockImplementation(() => {});
-    window.alert = jest.fn();
-    const wrapper = shallow(<App />);
-    wrapper.find(DogDetails).invoke('onBark')();
-    expect(window.alert).toBeCalled();
   });
 });

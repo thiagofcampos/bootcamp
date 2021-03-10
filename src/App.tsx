@@ -5,20 +5,13 @@ import CreateBeerFormikForm from './components/createBeerFormikForm /CreateBeerF
 import { Container, CssBaseline, Grid } from '@material-ui/core';
 
 function App() {
-  const image =
-    'https://www.eastdallasvetclinic.com/sites/default/files/styles/large/adaptive-image/public/golden-retriever-dog-breed-info.jpg?itok=EXS-JR-v';
-
-  const onBark = useCallback(() => {
-    alert('Wuf wuf');
-  }, []);
-
   return (
     <>
       <CssBaseline />
       <Container maxWidth="lg">
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <DogDetails name={'Golden'} urlImage={image} onBark={onBark} />
+            <DogDetails />
           </Grid>
           <Grid item sm={6}>
             <CreateBeerForm />

@@ -1,7 +1,8 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import DogDetails from './components/dogDetails/DogDetails';
 import CreateBeerForm from './components/createBeerForm/CreateBeerForm';
 import CreateBeerFormikForm from './components/createBeerFormikForm /CreateBeerFormikForm';
+import DogList from './components/dogList/DogList';
 import { Container, CssBaseline, Grid } from '@material-ui/core';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <DogDetails />
+            <DogList />
           </Grid>
           <Grid item sm={6}>
             <CreateBeerForm />

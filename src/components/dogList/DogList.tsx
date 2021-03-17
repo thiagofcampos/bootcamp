@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DogListView from './DogListView';
 import { getAll } from '../../service/dogList/DogListService';
 import { keys } from 'lodash';

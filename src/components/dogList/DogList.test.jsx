@@ -21,9 +21,9 @@ describe('DogList', () => {
     expect(getAll).toHaveBeenCalledTimes(1);
   });
 
-  it('should call useState hook on execute useEffect', async () => {
+  it('should call useState hook on execute useEffect', () => {
 		const setDogList = jest.fn()
-		jest.spyOn(React, 'useState').mockImplementationOnce(((dogList) => [dogList, setDogList] ))
+		jest.spyOn(React, 'useState').mockImplementationOnce((dogList) => [dogList, setDogList] )
 		jest.spyOn(React, 'useEffect').mockImplementationOnce((f) => f());
 		const wrapper = shallow(<DogList />);
 		expect(React.useState).toHaveBeenCalled();

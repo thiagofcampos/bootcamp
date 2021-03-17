@@ -4,11 +4,11 @@ import { getAll } from '../../service/dogList/DogListService';
 import { keys } from 'lodash';
 
 export default function DogList() {
-  const [dogList, setDogList] = useState<string[]>([]);
+  const [dogList, setDogList] = React.useState<string[]>([]);
 
   const fetchDogs = async () => {
     const listDogs = await getAll();
-    setDogList(keys(listDogs.message));
+    setDogList(keys(listDogs?.message));
   };
 
   React.useEffect(() => {

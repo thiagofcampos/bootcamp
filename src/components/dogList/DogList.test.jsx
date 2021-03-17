@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { getAll } from '../../service/dogList/DogListService';
 import DogList from './DogList';
-import {once} from 'lodash'
 import DogListView from './DogListView';
 
 jest.mock('../../service/dogList/DogListService');
@@ -17,9 +16,16 @@ describe('DogList', () => {
   });
 
   it('should call function to make API request', () => {
-		jest.spyOn(React, 'useEffect').mockImplementation((f) => once(f)());
-
+		jest.spyOn(React, 'useEffect').mockImplementationOnce((f) => f());
     const wrapper = shallow(<DogList />);
-    expect(React.useEffect).toHaveBeenCalledTimes(1);
+    expect(getAll).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call useState hook on execute useEffect', async () => {
+		const setDogList = jest.fn()
+		jest.spyOn(React, 'useState').mockImplementationOnce(((dogList) => [dogList, setDogList] ))
+		jest.spyOn(React, 'useEffect').mockImplementationOnce((f) => f());
+		const wrapper = shallow(<DogList />);
+		expect(React.useState).toHaveBeenCalled();
   });
 });

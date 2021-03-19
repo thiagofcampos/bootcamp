@@ -2,7 +2,6 @@ import React from 'react';
 import { dogDetailsStyle } from './DogDetailsView.styles';
 import Button from '../button/Button';
 import DogList from '../dogList/DogList';
-
 export interface Props {
   urlImage: string;
   name: string;

@@ -1,39 +1,35 @@
 import { getAllBreeds } from './DogListService';
+import axios from 'axios';
+
+jest.mock('axios');
 
 describe('DogListService', () => {
   it('should return a breed list with success', async () => {
-    const mockSuccessResponse = {
+    const data = {
       message: {
         african: [],
 				australian:[]
       },
     };
 
-    const mockJsonPromise = Promise.resolve(mockSuccessResponse);
-    const mockFetchPromise = Promise.resolve({
-      json: () => mockJsonPromise,
-    });
-		
-    jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
-
+    axios.get.mockImplementation(() => Promise.resolve({data}));
 		const result = await getAllBreeds();
 
-		expect(global.fetch).toBeCalledTimes(1);
-		expect(result).toEqual(mockSuccessResponse);
-		expect(global.fetch).toHaveBeenCalledWith('https://dog.ceo/api/breeds/list/all')
+		expect(axios.get).toBeCalledTimes(1);
+		expect(result).toEqual(data);
+		expect(axios.get).toHaveBeenCalledWith('https://dog.ceo/api/breeds/list/all')
   });
 	
   it('should throw error when the server request has error', async () => {
-    jest.spyOn(global, 'fetch');
 
 		const errorMessage = 'Network Error';
-    (global.fetch).mockImplementation(() =>
+    (axios.get).mockImplementation(() =>
       Promise.reject(new Error(errorMessage)),
     );	
 		try {
 			await getAllBreeds()
 		} catch {
-			await expect(global.fetch).rejects.toThrow(errorMessage);
+			await expect(axios.get).rejects.toThrow(errorMessage);
 		}
   });
 });

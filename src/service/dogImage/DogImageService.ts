@@ -1,4 +1,6 @@
-export const API = 'https://dog.ceo/api/breed';
+import axios from 'axios';
+
+const API = 'https://dog.ceo/api/breed';
 
 interface BreedsResponse {
   message: string;
@@ -7,9 +9,9 @@ interface BreedsResponse {
 export const getBreedImages = async (breed: string): Promise<BreedsResponse> => {
   try {
     const url = `${API}/${breed}/images/random`;
-    const response = await fetch(url);
+    const response = await axios.get(url);
 
-    return response.json();
+    return response.data;
   } catch (error) {
     throw error;
   }

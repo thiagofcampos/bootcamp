@@ -4,9 +4,10 @@ export const dogDetailsStyle = makeStyles({
   containerImage: {
     padding: '20px 0px 20px 0px',
     borderRadius: '5px',
-    background: '#FFDEAF',
+    background: '#f7f4f0',
     alignItems: 'center',
     display: 'flex',
+    width: '60vw',
     flexDirection: 'column',
     '& img': {
       height: 130,
@@ -31,5 +32,10 @@ export const dogDetailsStyle = makeStyles({
     justifyContent: 'space-around',
     padding: 20,
     width: '100%',
+  },
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
 });

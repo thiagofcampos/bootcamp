@@ -2,39 +2,57 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import DogDetailsView from './DogDetailsView';
 import Button from '../button/Button';
+import DogList from '../dogList/DogList';
+import {dogDetailsStyle} from './DogDetailsView.styles'
+
+jest.mock('./DogDetailsView.styles')
 
 describe('DogDetailsView', () => {
-  const onScoldMock = jest.fn();
-  const onBarkMock = jest.fn();
+  beforeEach(() => {
+    dogDetailsStyle.mockReturnValue({
+      container: 'container',
+      containerButton: 'container',
+      containerImage: 'container',
+    });
+  });
+
   it('renders component with his props', () => {
     const wrapper = shallow(
       <DogDetailsView
-        name={'teste'}
-        urlImage={'teste'}
-        onBark={onBarkMock}
-        scoldCount={0}
-        onScold={onScoldMock}
       />
     );
-
     expect(
       wrapper.matchesElement(
         <div>
-          <div>
-            <img />
-            <span>teste</span>
-            <span>Scold: 0</span>
-            <div>
-              <Button onClick={onBarkMock}>Bark!</Button>
-              <Button onClick={onScoldMock}>Scold!</Button>
+        <div className="container">
+          <div className="container">
+            <img alt="Dog" />
+            <span />
+            <span>
+              Scold: 
+            </span>
+            <div className="container">
+              <Button >
+                Bark!
+              </Button>
+              <Button >
+                Scold!
+              </Button>
             </div>
           </div>
+          <div>
+            <DogList />
+          </div>
         </div>
+      </div>
       )
     ).toBe(true);
   });
 
   it('should call a function onClick bark', () => {
+		const onScoldMock = jest.fn();
+  const onBarkMock = jest.fn();
+
     const wrapper = shallow(
       <DogDetailsView
         name={'teste'}
@@ -49,6 +67,9 @@ describe('DogDetailsView', () => {
   });
 
   it('should call a function onClick onScold', () => {
+		const onScoldMock = jest.fn();
+  const onBarkMock = jest.fn();
+
     const wrapper = shallow(
       <DogDetailsView
         name={'teste'}

@@ -13,7 +13,6 @@ function App() {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <DogDetails />
-            <DogList />
           </Grid>
           <Grid item sm={6}>
             <CreateBeerForm />

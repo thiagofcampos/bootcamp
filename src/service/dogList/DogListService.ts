@@ -4,7 +4,7 @@ interface BreedsResponse {
   message: Array<string[]>;
 }
 
-export const getAll = async (): Promise<BreedsResponse> => {
+export const getAllBreeds = async (): Promise<BreedsResponse> => {
   try {
     const url = `${API}/list/all`;
     const response = await fetch(url);

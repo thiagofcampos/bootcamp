@@ -7,8 +7,6 @@ export const DogListStyle = makeStyles((theme: Theme) =>
       width: '100%',
       overflow: 'auto',
       maxHeight: 600,
-      maxWidth: 500,
-      backgroundColor: '#c3c3c3',
     },
   })
 );

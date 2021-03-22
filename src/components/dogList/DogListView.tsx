@@ -17,7 +17,7 @@ const DogListView: React.FC<Props> = ({ dogBreeds, selectedBreed, onSelectDog })
         {dogBreeds.map((item, index) => {
           return (
             <DogListItem
-              key={index}
+              key={item.name}
               active={item.name === selectedBreed.name}
               breedImage={item.image}
               breed={capitalize(item.name)}

@@ -6,7 +6,6 @@ import { DogListStyle } from './DogListItemView.styles';
 interface Props {
   breed: string;
   breedImage: string;
-  key: number;
   active: boolean;
   scoldingCounter: number;
   onSelectDog: (breedName: string) => void;
@@ -15,7 +14,6 @@ interface Props {
 const DogListItemView: React.FC<Props> = ({
   breed,
   breedImage,
-  key,
   active,
   scoldingCounter,
   onSelectDog,
@@ -26,11 +24,7 @@ const DogListItemView: React.FC<Props> = ({
   }, []);
 
   return (
-    <div
-      onClick={onSelectDogBreed}
-      key={key}
-      className={`${classes.container} ${active && classes.active}`}
-    >
+    <div onClick={onSelectDogBreed} className={`${classes.container} ${active && classes.active}`}>
       <img className={classes.image} src={breedImage} />
       <ListItemText className={classes.title} primary={capitalize(breed)} />
       <span>Scold: {scoldingCounter}</span>

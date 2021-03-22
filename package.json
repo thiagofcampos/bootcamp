@@ -1,6 +1,28 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+	"jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/index.tsx",
+      "!src/**/*.styles.ts"
+    ],
+    "coverageReporters": [
+      "cobertura",
+      "html",
+      "lcov",
+      "text-summary",
+      "text"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 100,
+        "branches": 100,
+        "lines": 100,
+        "functions": 100
+      }
+    }
+  },
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",

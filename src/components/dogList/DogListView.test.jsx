@@ -6,7 +6,7 @@ import DogListItem from '../dogListItem/DogListItem';
 import { capitalize } from 'lodash';
 jest.mock('./DogListView.styles.ts');
 
-describe('DogList', () => {
+describe('DogListView', () => {
   beforeEach(() => {
     DogListStyle.mockReturnValue({
       root: 'root',
@@ -15,46 +15,25 @@ describe('DogList', () => {
 
   it('should render the component with the right props', () => {
     const mockBreedList = [
-      { breed: 'affenpinscher', image: '' },
-      { breed: 'akita', image: '' },
+      { name: 'affenpinscher', image: '', scoldingCounter: 0 },
+      { name: 'akita', image: '', scoldingCounter: 0 },
     ];
-    const wrapper = shallow(<DogListView breedList={mockBreedList} />);
+		const mockSelectedBreed = mockBreedList[0]
+    const wrapper = shallow(<DogListView dogBreeds={mockBreedList} onSelectDog={jest.fn()} selectedBreed={mockSelectedBreed}/>);
     expect(
       wrapper.matchesElement(
-        <div className={'root'}>
-          <List component="nav">
-            {mockBreedList.map((item, index) => {
-              return <DogListItem key={index} breed={item.breed} />;
-            })}
-          </List>
-        </div>
+        <div className={"root"}>
+					<List component="nav">
+						{mockBreedList.map((item, index) => {
+							return (
+								<DogListItem
+									key={index}
+								/>
+							);
+						})}
+					</List>
+   		</div>
       )
-    );
-  });
-  it('should render all de elements on typeBeerList when map', () => {
-    const mockBreedList = [
-      { breed: 'affenpinscher', image: '' },
-      { breed: 'akita', image: '' },
-    ];
-    const wrapper = shallow(<DogListView breedList={mockBreedList} />);
-    expect(wrapper.find(List).children()).toHaveLength(mockBreedList.length);
-  });
-
-  it('should capitalize the first letter of every breed name', () => {
-    const mockBreedList = [
-      { breed: 'affenpinscher', image: '' },
-      { breed: 'akita', image: '' },
-    ];
-    const wrapper = shallow(<DogListView breedList={mockBreedList} />);
-
-    expect(
-      wrapper.find(DogListItem).map((item) => {
-        item.text();
-      })
-    ).toEqual(
-      mockBreedList.map((item) => {
-        capitalize(item.breed);
-      })
     );
   });
 });

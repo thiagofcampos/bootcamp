@@ -8,13 +8,7 @@ describe('DogDetails', () => {
     const wrapper = shallow(<DogDetails />);
     expect(
       wrapper.matchesElement(
-        <DogDetailsView
-          urlImage={'teste'}
-          name={'teste'}
-          onBark={mockFn}
-          scoldCount={0}
-          onScold={mockFn}
-        />
+        <DogDetailsView/>
       )
     );
   });
@@ -23,11 +17,5 @@ describe('DogDetails', () => {
     const wrapper = shallow(<DogDetails />);
     wrapper.invoke('onBark')();
     expect(window.alert).toBeCalled();
-  });
-
-  it('should add + 1 to scold count when call onScold function', () => {
-    const wrapper = shallow(<DogDetails />);
-    wrapper.invoke('onScold')();
-    expect(wrapper.prop('scoldCount')).toBe(1);
   });
 });

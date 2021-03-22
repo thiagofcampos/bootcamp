@@ -33,9 +33,4 @@ export const dogDetailsStyle = makeStyles({
     padding: 20,
     width: '100%',
   },
-  container: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
 });

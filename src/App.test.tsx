@@ -4,8 +4,7 @@ import { shallow } from 'enzyme';
 import App from './App';
 import CreateBeerForm from './components/createBeerForm/CreateBeerForm';
 import CreateBeerFormikForm from './components/createBeerFormikForm /CreateBeerFormikForm';
-import DogDetails from './components/dogDetails/DogDetails';
-import DogList from './components/dogList/DogList';
+import DogDetailsWrapper from './components/dogDetailsWrapper/DogDetailsWrapper';
 
 describe('App', () => {
   it('should render with the right props', () => {
@@ -18,7 +17,7 @@ describe('App', () => {
           <Container maxWidth="lg">
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <DogDetails />
+                <DogDetailsWrapper />
               </Grid>
               <Grid item sm={6}>
                 <CreateBeerForm />

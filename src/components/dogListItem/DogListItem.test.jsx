@@ -7,7 +7,6 @@ describe('DogListItem', () => {
 
   it('should render the component with the right props', () => {
     const wrapper = shallow(<DogListItem />);
-
     expect(wrapper.matchesElement(<DogListItemView/>));
   });
 });

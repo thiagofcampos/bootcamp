@@ -6,6 +6,11 @@ export const DogListStyle = makeStyles((theme: Theme) =>
       display: 'flex',
       flexDirection: 'row',
       margin: 10,
+      cursor: 'pointer',
+    },
+    active: {
+      border: '2px solid #ccc',
+      padding: 5,
     },
     image: {
       width: 150,

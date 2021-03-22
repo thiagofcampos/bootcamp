@@ -1,8 +1,7 @@
 import React from 'react';
-import DogDetails from './components/dogDetails/DogDetails';
+import DogDetailsWrapper from './components/dogDetailsWrapper/DogDetailsWrapper';
 import CreateBeerForm from './components/createBeerForm/CreateBeerForm';
 import CreateBeerFormikForm from './components/createBeerFormikForm /CreateBeerFormikForm';
-import DogList from './components/dogList/DogList';
 import { Container, CssBaseline, Grid } from '@material-ui/core';
 
 function App() {
@@ -12,7 +11,7 @@ function App() {
       <Container maxWidth="lg">
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <DogDetails />
+            <DogDetailsWrapper />
           </Grid>
           <Grid item sm={6}>
             <CreateBeerForm />

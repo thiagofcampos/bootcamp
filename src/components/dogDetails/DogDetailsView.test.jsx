@@ -10,7 +10,6 @@ jest.mock('./DogDetailsView.styles')
 describe('DogDetailsView', () => {
   beforeEach(() => {
     dogDetailsStyle.mockReturnValue({
-      container: 'container',
       containerButton: 'container',
       containerImage: 'container',
     });
@@ -25,23 +24,15 @@ describe('DogDetailsView', () => {
       wrapper.matchesElement(
         <div>
         <div className="container">
+          <img alt="Dog" />
+          <span />
           <div className="container">
-            <img alt="Dog" />
-            <span />
-            <span>
-              Scold: 
-            </span>
-            <div className="container">
-              <Button >
-                Bark!
-              </Button>
-              <Button >
-                Scold!
-              </Button>
-            </div>
-          </div>
-          <div>
-            <DogList />
+            <Button>
+              Bark!
+            </Button>
+            <Button>
+              Scold!
+            </Button>
           </div>
         </div>
       </div>
@@ -55,8 +46,8 @@ describe('DogDetailsView', () => {
 
     const wrapper = shallow(
       <DogDetailsView
-        name={'teste'}
-        urlImage={'teste'}
+        name={'test'}
+        urlImage={'test'}
         onBark={onBarkMock}
         scoldCount={0}
         onScold={onScoldMock}
@@ -72,8 +63,8 @@ describe('DogDetailsView', () => {
 
     const wrapper = shallow(
       <DogDetailsView
-        name={'teste'}
-        urlImage={'teste'}
+        name={'test'}
+        urlImage={'test'}
         onBark={onBarkMock}
         scoldCount={0}
         onScold={onScoldMock}

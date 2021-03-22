@@ -13,8 +13,6 @@ const DogDetailsWrapper = () => {
     const response = await getBreedImages(breed);
     return response.message;
   };
-
-  console.log(selectedBreedFilter);
   const fetchDogs = async () => {
     setIsLoading(true);
     try {
@@ -47,7 +45,6 @@ const DogDetailsWrapper = () => {
     const selectedBreed = (selectedBreedFilter ? filterBreedList : breedList).find(
       (item) => item.name.toLowerCase() === breedName.toLowerCase()
     );
-    console.log(selectedBreed);
     if (!selectedBreed) return;
     setSelectedBreed(selectedBreed);
   };

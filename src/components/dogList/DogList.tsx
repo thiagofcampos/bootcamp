@@ -1,18 +1,19 @@
 import React, { useMemo } from 'react';
 import DogListView from './DogListView';
-import { DogBreed } from '../../types/DogBreedsType';
-interface Props {
-  dogBreeds: DogBreed[];
-  selectedBreed: DogBreed;
-  selectedBreedFilter: string;
-  onSelectDog: (breedName: string) => void;
-}
-export default function DogList({
-  dogBreeds,
-  selectedBreed,
-  selectedBreedFilter,
-  onSelectDog,
-}: Props) {
+import DogListStore from '../../stores/dogList/DogListStore';
+import { useStoreMap, useStore } from 'effector-react';
+import DogItemStore from '../../stores/dogItem/DogItemStore';
+import BreedFilterStore from '../../stores/breedFilter/BreedFilterStore';
+
+export default function DogList() {
+  const dogBreeds = useStoreMap({
+    store: DogListStore,
+    keys: [],
+    fn: (state) => state.dogBreeds,
+  });
+  const selectedBreed = useStore(DogItemStore);
+  const { selectedBreedFilter } = useStore(BreedFilterStore);
+  console.log('selectedBreedFilter', selectedBreedFilter);
   const filteredDogList = useMemo(
     () =>
       selectedBreedFilter
@@ -23,11 +24,5 @@ export default function DogList({
         : dogBreeds,
     [dogBreeds, selectedBreedFilter]
   );
-  return (
-    <DogListView
-      dogBreeds={filteredDogList}
-      selectedBreed={selectedBreed}
-      onSelectDog={onSelectDog}
-    />
-  );
+  return <DogListView dogBreeds={filteredDogList} selectedBreed={selectedBreed} />;
 }

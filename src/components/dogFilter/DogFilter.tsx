@@ -1,15 +1,22 @@
 import React, { useCallback, useMemo } from 'react';
-import { DogBreed } from '../../types/DogBreedsType';
+import DogListStore from '../../stores/dogList/DogListStore';
+import { useStoreMap } from 'effector-react';
 import DogFilterView from './DogFilterView';
-interface Props {
-  dogBreeds: DogBreed[];
-  onSelectDogBreedFilter: (dogBreedFilter: string) => void;
-}
-function DogFilter({ dogBreeds, onSelectDogBreedFilter }: Props): JSX.Element {
+import * as BreedFilterEffect from '../../stores/breedFilter/BreedFilterEffect';
+
+function DogFilter(): JSX.Element {
+  const dogBreeds = useStoreMap({
+    store: DogListStore,
+    keys: [],
+    fn: (state) => state.dogBreeds,
+  });
+
   const filterOptions = useMemo(() => 'abcdefghijklmnopqrstuvwxyz'.split(''), []);
+
   const onChangeOption = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    onSelectDogBreedFilter(e.target.value);
+    BreedFilterEffect.onBreedFilter({ selectedBreedFilter: e.target.value });
   }, []);
+
   const getDogBreedsLength = useCallback(
     (dogBreedLetter: string) => {
       return dogBreeds.filter(

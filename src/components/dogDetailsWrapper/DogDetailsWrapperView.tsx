@@ -3,26 +3,11 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { dogDetailsWrapperStyle } from './DogDetailsWrapperView.styles';
 import DogDetails from '../dogDetails/DogDetails';
 import DogList from '../dogList/DogList';
-import { DogBreed } from '../../types/DogBreedsType';
 import DogFilter from '../dogFilter/DogFilter';
 export interface Props {
   isLoading: boolean;
-  onScold: () => void;
-  dogBreeds: DogBreed[];
-  selectedBreed: DogBreed;
-  selectedBreedFilter: string;
-  onSelectDog: (breedName: string) => void;
-  onSelectDogBreedFilter: (dogBreedFilter: string) => void;
 }
-const DogDetailsWrapperView = ({
-  isLoading,
-  dogBreeds,
-  selectedBreed,
-  selectedBreedFilter,
-  onSelectDog,
-  onSelectDogBreedFilter,
-  onScold,
-}: Props) => {
+const DogDetailsWrapperView = ({ isLoading }: Props) => {
   const classes = dogDetailsWrapperStyle();
   if (isLoading)
     return (
@@ -36,15 +21,10 @@ const DogDetailsWrapperView = ({
     <div>
       <div className={classes.container}>
         <div>
-          <DogFilter dogBreeds={dogBreeds} onSelectDogBreedFilter={onSelectDogBreedFilter} />
-          <DogDetails name={selectedBreed?.name} image={selectedBreed?.image} onScold={onScold} />
+          <DogFilter />
+          <DogDetails />
         </div>
-        <DogList
-          dogBreeds={dogBreeds}
-          selectedBreed={selectedBreed}
-          selectedBreedFilter={selectedBreedFilter}
-          onSelectDog={onSelectDog}
-        />
+        <DogList />
       </div>
     </div>
   );

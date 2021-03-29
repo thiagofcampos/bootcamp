@@ -7,9 +7,8 @@ import { DogBreed } from '../../types/DogBreedsType';
 interface Props {
   dogBreeds: DogBreed[];
   selectedBreed: DogBreed;
-  onSelectDog: (breedName: string) => void;
 }
-const DogListView: React.FC<Props> = ({ dogBreeds, selectedBreed, onSelectDog }) => {
+const DogListView: React.FC<Props> = ({ dogBreeds, selectedBreed }) => {
   const classes = DogListStyle();
   return (
     <div className={classes.root}>
@@ -22,7 +21,6 @@ const DogListView: React.FC<Props> = ({ dogBreeds, selectedBreed, onSelectDog })
               breedImage={item.image}
               breed={capitalize(item.name)}
               scoldingCounter={item.scoldingCounter}
-              onSelectDog={onSelectDog}
             />
           );
         })}

@@ -21,12 +21,12 @@ describe('DogDetailsWrapperView', () => {
     );
     expect(
       wrapper.matchesElement(
-        <div>
-      <div className={"container"}>
-        <DogDetails />
-        <DogList />
-      </div>
-    </div>
+			<div>
+				<div className={"container"}>
+					<DogDetails />
+					<DogList />
+				</div>
+			</div>
       )
     ).toBe(true);
   });

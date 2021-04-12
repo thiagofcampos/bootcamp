@@ -10,7 +10,6 @@ const initialState: BreedFilterState = {
 const BreedFilterStore = createStore<BreedFilterState>(initialState).on(
   onBreedFilter,
   (state, selectedBreedFilter) => {
-    console.log(selectedBreedFilter);
     return cloneDeep({
       ...state,
       ...selectedBreedFilter,

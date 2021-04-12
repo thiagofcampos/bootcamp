@@ -5,10 +5,10 @@ import DogFilterView from './DogFilterView';
 import * as BreedFilterEffect from '../../stores/breedFilter/BreedFilterEffect';
 
 function DogFilter(): JSX.Element {
-  const dogBreeds = useStoreMap({
+  const { dogBreeds } = useStoreMap({
     store: DogListStore,
     keys: [],
-    fn: (state) => state.dogBreeds,
+    fn: (state) => state,
   });
 
   const filterOptions = useMemo(() => 'abcdefghijklmnopqrstuvwxyz'.split(''), []);
@@ -19,6 +19,7 @@ function DogFilter(): JSX.Element {
 
   const getDogBreedsLength = useCallback(
     (dogBreedLetter: string) => {
+      console.log('in');
       return dogBreeds.filter(
         (dogBreed) => dogBreed.name.charAt(0).toLowerCase() === dogBreedLetter.toLowerCase()
       ).length;

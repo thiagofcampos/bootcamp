@@ -11,8 +11,7 @@ describe('DogImageService', () => {
     };
 		axios.get.mockImplementation(() => Promise.resolve({data}));
 		const response = await getBreedImages(mockBreed)
-		expect(response).toEqual(data);
-    
+		expect(response).toEqual(data.message);
 		expect(axios.get).toHaveBeenCalledWith(`https://dog.ceo/api/breed/${mockBreed}/images/random`)
   });
 	

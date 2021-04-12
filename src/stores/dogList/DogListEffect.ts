@@ -3,8 +3,10 @@ import { keys } from 'lodash';
 import { getBreedImages } from '../../service/dogImage/DogImageService';
 import { getAllBreeds } from '../../service/dogList/DogListService';
 import { DogBreed } from '../../types/DogBreedsType';
+import * as LoaderEffect from '../../stores/loader/LoaderEffect';
 
 export const listDogBreeds = createEffect(async () => {
+  LoaderEffect.setLoading({ isLoading: true });
   const listDogs = await getAllBreeds();
   const captionDogList = keys(listDogs?.message);
   const formatBreeds: DogBreed[] = await Promise.all(
@@ -19,6 +21,7 @@ export const listDogBreeds = createEffect(async () => {
       }
     )
   );
+  LoaderEffect.setLoading({ isLoading: false });
   return formatBreeds;
 });
 

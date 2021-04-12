@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import DogListView from './DogListView';
 import { DogListStyle } from './DogListView.styles';
 import DogListItem from '../dogListItem/DogListItem';
-import { capitalize } from 'lodash';
+
 jest.mock('./DogListView.styles.ts');
 
 describe('DogListView', () => {
@@ -34,6 +34,6 @@ describe('DogListView', () => {
 					</List>
    		</div>
       )
-    );
+    ).toBe(true);
   });
 });

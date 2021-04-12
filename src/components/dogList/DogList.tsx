@@ -1,22 +1,32 @@
 import React, { useMemo } from 'react';
 import DogListView from './DogListView';
 import DogListStore from '../../stores/dogList/DogListStore';
-import { useStoreMap, useStore } from 'effector-react';
+import { useStoreMap } from 'effector-react';
 import DogItemStore from '../../stores/dogItem/DogItemStore';
 import BreedFilterStore from '../../stores/breedFilter/BreedFilterStore';
 
 export default function DogList() {
-  const dogBreeds = useStoreMap({
+  const { dogBreeds } = useStoreMap({
     store: DogListStore,
     keys: [],
-    fn: (state) => state.dogBreeds,
+    fn: (state) => state,
   });
-  const selectedBreed = useStore(DogItemStore);
-  const { selectedBreedFilter } = useStore(BreedFilterStore);
-  console.log('selectedBreedFilter', selectedBreedFilter);
+
+  const selectedBreed = useStoreMap({
+    store: DogItemStore,
+    keys: [],
+    fn: (state) => state,
+  });
+
+  const { selectedBreedFilter } = useStoreMap({
+    store: BreedFilterStore,
+    keys: [],
+    fn: (state) => state,
+  });
+
   const filteredDogList = useMemo(
     () =>
-      selectedBreedFilter
+      selectedBreedFilter && dogBreeds?.length > 0
         ? dogBreeds.filter(
             (dogBreed) =>
               dogBreed.name.charAt(0).toLowerCase() === selectedBreedFilter.toLowerCase()
